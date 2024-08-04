@@ -4,9 +4,6 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -16,30 +13,35 @@ class MessageSent implements ShouldBroadcastNow
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     public $message;
+    public $recipientId;
+
     /**
      * Create a new event instance.
+     *
+     * @param string $message
+     * @param int $recipientId
      */
-    public function __construct($message = null)
+    public function __construct($message, $recipientId)
     {
         $this->message = $message;
+        $this->recipientId = $recipientId;
     }
 
     public function broadcastOn(): Channel
     {
-        return new Channel('channel-core');
+        // Private channel for the recipient
+        return new Channel('user.' . $this->recipientId);
     }
 
     public function broadcastWith()
     {
-        if ($this->message !== null) {
-            return [
-                'message' => $this->message
-            ];
-        }
+        return [
+            'message' => $this->message
+        ];
     }
 
     public function broadcastAs(): string
     {
-        return 'event-message-received';
+        return 'message-sent';
     }
 }
