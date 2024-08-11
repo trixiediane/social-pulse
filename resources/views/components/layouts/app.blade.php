@@ -14,7 +14,7 @@
     <!-- ========== HEADER ========== -->
     <header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm">
         <nav
-            class="mt-4 relative max-w-2xl w-full bg-white border border-gray-200 rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto">
+            class="mt-4 relative max-w-4xl w-full bg-white border border-gray-300 rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto">
             <div class="px-4 md:px-0 flex justify-between items-center">
                 <!-- Logo -->
                 <div>
@@ -67,12 +67,43 @@
                 aria-labelledby="hs-navbar-header-floating-collapse">
                 <div
                     class="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7">
-                    <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-gray-800 font-medium text-gray-800 focus:outline-none"
-                        href="#" aria-current="page">Home</a>
+
+
                     <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none"
-                        href="#">Projects</a>
-                    <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none"
-                        href="#">Work</a>
+                        href="#">
+                        <div class="max-w-sm">
+                            <!-- SearchBox -->
+                            <div class="relative">
+                                <div class="relative">
+                                    <div
+                                        class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
+                                        <svg class="shrink-0 size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg"
+                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <path d="m21 21-4.3-4.3"></path>
+                                        </svg>
+                                    </div>
+                                    <input
+                                        class="py-2 ps-12 pe-6 block w-full md:w-120 lg:w-full border border-gray-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                                        type="text" role="combobox" aria-expanded="false"
+                                        placeholder="Search user..." value="" data-hs-combo-box-input="">
+                                </div>
+                            </div>
+                            <!-- End SearchBox -->
+                        </div>
+                    </a>
+                    @php
+                        $currentRoute = request()->path();
+                    @endphp
+
+                    <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 {{ $currentRoute === '/' ? 'border-b-2 border-gray-800 font-medium' : 'border-transparent' }} text-gray-800 focus:outline-none"
+                        href="/" aria-current="page">Home</a>
+
+                    <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 {{ $currentRoute === 'content' ? 'border-b-2 border-gray-800 font-medium' : 'border-transparent' }} text-gray-800 focus:outline-none"
+                        href="/content">Content</a>
+
                     <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none"
                         href="/logout">Logout</a>
                 </div>
