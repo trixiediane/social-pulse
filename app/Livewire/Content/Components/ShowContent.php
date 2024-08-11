@@ -3,6 +3,7 @@
 namespace App\Livewire\Content\Components;
 
 use App\Models\Content;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportPagination\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -11,6 +12,8 @@ class ShowContent extends Component
 {
     use WithPagination, WithoutUrlPagination;
     public $userId;
+
+    #[On('content-created')]
     public function render()
     {
         $user = auth()->user();

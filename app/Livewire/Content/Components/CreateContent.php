@@ -38,6 +38,8 @@ class CreateContent extends Component
 
             session()->flash('message', 'Content created successfully!');
             $this->reset(); // Reset the form fields after successful creation
+
+            $this->dispatch('content-created');
         } catch (\Exception $e) {
             session()->flash('error', 'Failed to create content: ' . $e->getMessage());
         }
