@@ -31,12 +31,16 @@ class PageProfile extends Component
     public function render()
     {
         return view(
-            'livewire.profile.page-profile'
+            'livewire.profile.page-profile',
+            [
+                'user' => User::findOrFail($this->userId)
+            ]
         );
     }
 
     public function update()
     {
+        Log::info('Update method called');
 
         // Define conditional validation rules
         $rules = [];
@@ -60,19 +64,32 @@ class PageProfile extends Component
                 return;
             }
 
-            $user->update([
+            // Prepare data to update
+            $updateData = [
                 'username' => $this->username,
                 'email' => $this->email,
-                'profile_picture' => $this->storeProfilePicture(),
-                'profile_header' => $this->storeProfileHeader(),
-            ]);
+            ];
 
-            session()->flash('success', 'Profile updated successfully.');
+            // Handle profile picture update
+            if ($this->profile_picture) {
+                $updateData['profile_picture'] = $this->storeProfilePicture();
+            }
+
+            // Handle profile header update
+            if ($this->profile_header) {
+                $updateData['profile_header'] = $this->storeProfileHeader();
+            }
+
+            // Update the user
+            $user->update($updateData);
+
+            $this->redirect('profile');
         } catch (Exception $e) {
             Log::error('Failed to update profile: ' . $e->getMessage());
             session()->flash('error', 'Failed to update profile: ' . $e->getMessage());
         }
     }
+
 
     protected function storeProfilePicture()
     {
