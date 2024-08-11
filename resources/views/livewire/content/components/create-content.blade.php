@@ -48,7 +48,7 @@
         @endif
     </div>
 
-    <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto">
+    <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto -mt-6">
         <!-- Card -->
         <div class="bg-white rounded-xl shadow-lg p-4 sm:p-7">
             <div class="mb-8">
@@ -66,13 +66,16 @@
                     <div class="sm:col-span-9">
                         <div class="flex items-center gap-5">
                             <div class="flex gap-x-2">
-                                <div>
-                                    <input type="file" wire:model="photo"
-                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
-                                    @error('photo')
-                                        <span class="text-red-600 text-sm">{{ $message }}</span>
-                                    @enderror
-                                </div>
+                                <label for="file-input" class="sr-only">Choose file</label>
+                                <input type="file" name="file-input" wire:model="photo" id="file-input"
+                                    class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none
+                                      file:bg-gray-50 file:border-0
+                                      file:me-4
+                                      file:py-3 file:px-4
+                                     ">
+                                @error('photo')
+                                    <span class="text-red-600 text-sm">{{ $message }}</span>
+                                @enderror
                             </div>
                         </div>
                     </div>
