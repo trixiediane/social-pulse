@@ -5,13 +5,23 @@
                 class="hs-tab-active:bg-white hs-tab-active:border-b-transparent hs-tab-active:text-blue-600 -mb-px py-3 px-4 inline-flex items-center gap-x-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-t-lg hover:text-gray-700 focus:outline-none focus:text-gray-700 disabled:opacity-50 disabled:pointer-events-none active"
                 id="card-type-tab-item-1" aria-selected="true" data-hs-tab="#card-type-tab-preview"
                 aria-controls="card-type-tab-preview" role="tab">
-                Yours
+                @hasrole('Admin')
+                    Pending Submissions
+                @endhasrole
+                @hasrole('User')
+                    Yours
+                @endhasrole
             </button>
             <button type="button"
                 class="hs-tab-active:bg-white hs-tab-active:border-b-transparent hs-tab-active:text-blue-600 -mb-px py-3 px-4 inline-flex items-center gap-x-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-t-lg hover:text-gray-700 focus:outline-none focus:text-gray-700 disabled:opacity-50 disabled:pointer-events-none"
                 id="card-type-tab-item-2" aria-selected="false" data-hs-tab="#card-type-tab-2"
                 aria-controls="card-type-tab-2" role="tab">
-                Create
+                @hasrole('Admin')
+                    Approved Submissions
+                @endhasrole
+                @hasrole('User')
+                    Create
+                @endhasrole
             </button>
             <button type="button"
                 class="hs-tab-active:bg-white hs-tab-active:border-b-transparent hs-tab-active:text-blue-600 -mb-px py-3 px-4 inline-flex items-center gap-x-2 bg-gray-50 text-sm font-medium text-center border text-gray-500 rounded-t-lg hover:text-gray-700 focus:outline-none focus:text-gray-700 disabled:opacity-50 disabled:pointer-events-none"
@@ -24,7 +34,12 @@
 
     <div class="mt-3">
         <div id="card-type-tab-preview" role="tabpanel" aria-labelledby="card-type-tab-item-1">
-            <livewire:content.components.show-content />
+            @hasrole('Admin')
+                <livewire:content.components.review-content />
+            @endhasrole
+            @hasrole('User')
+                <livewire:content.components.show-content />
+            @endhasrole
         </div>
         <div id="card-type-tab-2" class="hidden" role="tabpanel" aria-labelledby="card-type-tab-item-2">
             <livewire:content.components.create-content />

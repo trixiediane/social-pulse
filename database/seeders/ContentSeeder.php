@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -13,6 +14,8 @@ class ContentSeeder extends Seeder
      */
     public function run(): void
     {
+        $now = Carbon::now();
+
         DB::table('contents')->insert([
             [
                 'id' => 1,
@@ -23,6 +26,8 @@ class ContentSeeder extends Seeder
                 'approved_by' => 0,
                 'photo' => 'photos/im8r7arAhO3aifgsr4AVezJvRO76htqFYfnk9UKx.jpg',
                 'slug' => Str::slug('The Future of AI'),
+                'updated_at' => $now,
+                'created_at' => $now
             ],
             [
                 'id' => 2,
@@ -33,6 +38,8 @@ class ContentSeeder extends Seeder
                 'approved_by' => 0,
                 'photo' => 'photos/im8r7arAhO3aifgsr4AVezJvRO76htqFYfnk9UKx.jpg',
                 'slug' => Str::slug('Top 10 Travel Destinations for 2024'),
+                'updated_at' => $now,
+                'created_at' => $now
             ],
             [
                 'id' => 3,
@@ -43,6 +50,8 @@ class ContentSeeder extends Seeder
                 'approved_by' => 0,
                 'photo' => 'photos/im8r7arAhO3aifgsr4AVezJvRO76htqFYfnk9UKx.jpg',
                 'slug' => Str::slug('Healthy Eating Tips for Busy Professionals'),
+                'updated_at' => $now,
+                'created_at' => $now
             ],
             [
                 'id' => 4,
@@ -53,6 +62,8 @@ class ContentSeeder extends Seeder
                 'approved_by' => 0,
                 'photo' => 'photos/im8r7arAhO3aifgsr4AVezJvRO76htqFYfnk9UKx.jpg',
                 'slug' => Str::slug('Understanding Blockchain Technology'),
+                'updated_at' => $now,
+                'created_at' => $now
             ],
             [
                 'id' => 5,
@@ -63,6 +74,8 @@ class ContentSeeder extends Seeder
                 'approved_by' => 0,
                 'photo' => 'photos/im8r7arAhO3aifgsr4AVezJvRO76htqFYfnk9UKx.jpg',
                 'slug' => Str::slug('DIY Home Improvement Projects'),
+                'updated_at' => $now,
+                'created_at' => $now
             ],
         ]);
     }

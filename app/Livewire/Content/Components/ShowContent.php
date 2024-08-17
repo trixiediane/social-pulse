@@ -19,12 +19,22 @@ class ShowContent extends Component
         $user = auth()->user();
         $this->userId = $user->id;
 
+        $query = Content::query();
+
+        if ($user->hasRole('Admin')) {
+            $query->where('approved', 1);
+        } else {
+            $query->where('user_id', $this->userId);
+        }
+
+        $query->orderBy('id', 'DESC');
+
+        $contents = $query->paginate(4);
+
         return view(
             'livewire.content.components.show-content',
             [
-                'contents' => Content::where('user_id', $this->userId)
-                    ->orderBy('id', 'DESC')
-                    ->paginate(4)
+                'contents' => $contents
             ]
         );
     }

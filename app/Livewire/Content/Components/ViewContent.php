@@ -12,7 +12,6 @@ class ViewContent extends Component
     // Mount method to initialize the component with the slug
     public function mount($slug)
     {
-        // Fetch content based on the slug
         $this->content = Content::where('slug', $slug)->firstOrFail();
     }
 
