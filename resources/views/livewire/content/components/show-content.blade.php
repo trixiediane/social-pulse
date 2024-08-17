@@ -4,7 +4,8 @@
     <div class="grid lg:grid-cols-2 lg:gap-y-16 gap-10 mt-4">
         @foreach ($contents as $content)
             <!-- Card -->
-            <a class="group block rounded-xl overflow-hidden focus:outline-none" href="#">
+            <a class="group block rounded-xl overflow-hidden focus:outline-none"
+                href="{{ route('content.view', $content->slug) }}">
                 {{-- {{ route('content.show', $content->id) }} --}}
                 <div class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5">
                     <div class="shrink-0 relative rounded-xl overflow-hidden w-full sm:w-56 h-44">

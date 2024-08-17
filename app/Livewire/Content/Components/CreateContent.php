@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use App\Models\Content;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class CreateContent extends Component
 {
@@ -28,11 +29,20 @@ class CreateContent extends Component
         $this->validate(); // Validate the form data
 
         try {
+            // Generate a base slug from the title
+            $baseSlug = Str::slug($this->title);
+
+            // Append a random string or number to the base slug
+            $randomString = Str::random(6); // Generate a random string of 6 characters
+            $slug = "{$baseSlug}-{$randomString}";
+
+            // Create the content with the generated slug
             Content::create([
                 'title' => $this->title,
                 'short_description' => $this->short_description,
                 'body' => $this->body,
                 'photo' => $this->storePhoto(), // Handle photo storage
+                'slug' => $slug,
                 'user_id' => Auth::id(), // Set the current user as the owner
             ]);
 
@@ -52,6 +62,11 @@ class CreateContent extends Component
             return $path;
         }
         return null;
+    }
+
+    public function getBodyContent($body)
+    {
+        $this->body = $body;
     }
 
     public function render()

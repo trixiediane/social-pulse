@@ -48,7 +48,7 @@
         @endif
     </div>
 
-    <div class="max-w-4xl px-4 py-10 sm:px-6 lg:px-8 mx-auto -mt-6">
+    <div class="max-w-8xl px-4 py-10 sm:px-6 lg:px-8 mx-auto -mt-6">
         <!-- Card -->
         <div class="bg-white rounded-xl shadow-lg p-4 sm:p-7">
             <div class="mb-8">
@@ -56,7 +56,7 @@
                 <p class="text-sm text-gray-600">Add new content for your platform.</p>
             </div>
 
-            <form wire:submit.prevent="createContent">
+            <form wire:submit="createContent">
                 <!-- Grid -->
                 <div class="grid sm:grid-cols-12 gap-2 sm:gap-6">
                     <!-- Photo -->
@@ -112,7 +112,7 @@
                     </div>
                     <div class="sm:col-span-9">
                         <textarea id="body" wire:model="body"
-                            class="py-2 px-3 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
+                            class="tinymce py-2 px-3 block w-full border border-gray-300 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
                             rows="6" placeholder="Enter the main content..."></textarea>
                         @error('body')
                             <span class="text-red-600 text-sm">{{ $message }}</span>
@@ -126,7 +126,7 @@
                         class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-300 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
                         Cancel
                     </button>
-                    <button type="submit"
+                    <button type="submit" id="saveContent"
                         class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700">
                         Save Content
                     </button>
@@ -135,6 +135,4 @@
         </div>
         <!-- End Card -->
     </div>
-
-
 </div>

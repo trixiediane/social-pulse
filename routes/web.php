@@ -3,6 +3,7 @@
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Content\Components\CreateContent;
+use App\Livewire\Content\Components\ViewContent;
 use App\Livewire\Content\PageContent;
 use App\Livewire\Dashboard;
 use App\Livewire\Profile\PageProfile;
@@ -24,6 +25,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/content', PageContent::class)->name('content');
     Route::get('/content/create', CreateContent::class)->name('create.content');
+    Route::get('/content/view/{slug}', ViewContent::class)->name('content.view');
+
 
     Route::get('/profile', PageProfile::class)->name('profile');
 });

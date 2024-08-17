@@ -8,6 +8,10 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>{{ $title ?? 'Page Title' }}</title>
+
+    <!-- Custom page scripts stack -->
+    @stack('styles')
+    @stack('scripts')
 </head>
 
 <body>
