@@ -35,7 +35,7 @@
     <div class="mt-3">
         <div id="card-type-tab-preview" role="tabpanel" aria-labelledby="card-type-tab-item-1">
             @hasrole('Admin')
-                <livewire:content.components.review-content />
+                <livewire:content.components.view-content />
             @endhasrole
             @hasrole('User')
                 <livewire:content.components.show-content />

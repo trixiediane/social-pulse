@@ -4,20 +4,35 @@ namespace App\Livewire\Content\Components;
 
 use Livewire\Component;
 use App\Models\Content;
+use Livewire\Features\SupportPagination\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 class ViewContent extends Component
 {
-    public $content;
+    use WithPagination, WithoutUrlPagination;
 
-    // Mount method to initialize the component with the slug
+    public $content;
     public function mount($slug)
     {
         $this->content = Content::where('slug', $slug)->firstOrFail();
     }
 
-    // Render method to return the view
     public function render()
     {
-        return view('livewire.content.components.view-content');
+        $contents = Content::with('user')
+            ->where('approved', 0)
+            ->paginate(3);
+
+        return view(
+            'livewire.content.components.view-content',
+            [
+                'contents' => $contents
+            ]
+        );
+    }
+
+    public function openEditModal($id, $editModal)
+    {
+        $this->dispatch('edit-basic-modal', $id, editModal: $editModal);
     }
 }

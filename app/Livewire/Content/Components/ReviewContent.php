@@ -4,24 +4,38 @@ namespace App\Livewire\Content\Components;
 
 use App\Models\Content;
 use Livewire\Component;
-use Livewire\Features\SupportPagination\WithoutUrlPagination;
-use Livewire\WithPagination;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 
 class ReviewContent extends Component
 {
-    use WithPagination, WithoutUrlPagination;
+    public $content = '';
+    public $editModal = false;
+    public $contentId;
+    public $title;
+    public $short_description;
+    public $body;
+    public $photo;
 
+    // Render method to return the view
     public function render()
     {
-        $contents = Content::with('user')
-            ->where('approved', 0)
-            ->paginate(3);
-
         return view(
-            'livewire.content.components.review-content',
-            [
-                'contents' => $contents
-            ]
+            'livewire.content.components.review-content'
         );
+    }
+
+    #[On('edit-basic-modal')]
+    public function openEditModal($id, $editModal)
+    {
+        $this->content = Content::findOrFail($id);
+
+        $this->contentId = $this->content->id;
+        $this->title = $this->content->title;
+        $this->short_description = $this->content->short_description;
+        $this->body = $this->content->body;
+        $this->photo = Storage::url($this->content->photo);
+
+        $this->editModal = $editModal;
     }
 }
