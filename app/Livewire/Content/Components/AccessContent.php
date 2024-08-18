@@ -3,6 +3,7 @@
 namespace App\Livewire\Content\Components;
 
 use App\Models\Content;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportPagination\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -41,6 +42,7 @@ class AccessContent extends Component
         $this->closeAlert();
     }
 
+    #[On('requested-revision')]
     public function showAlert($message)
     {
         $this->message = $message;
