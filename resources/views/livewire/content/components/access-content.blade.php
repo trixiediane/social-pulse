@@ -1,5 +1,27 @@
 <div>
     @hasrole('Admin')
+        @if ($show)
+            <div class="fixed top-[var(--navbar-height)] left-1/2 transform -translate-x-1/2 bg-teal-500 text-sm text-white rounded-xl shadow-lg p-4 z-50"
+                role="alert" tabindex="-1">
+                <div class="flex items-center">
+                    <div class="flex-1">
+                        <span class="font-semibold"> {{ $message }}</span>
+                    </div>
+                    <button type="button" wire:click="closeAlert"
+                        class="inline-flex shrink-0 justify-center items-center rounded-lg text-white hover:text-gray-200 opacity-75 hover:opacity-100 focus:outline-none focus:opacity-100"
+                        aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round">
+                            <path d="M18 6 6 18"></path>
+                            <path d="m6 6 12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        @endif
+
         <div>
             <div class="flex flex-col">
                 <div class="-m-1.5 overflow-x-auto">
@@ -39,7 +61,7 @@
                                                 {{ $content->created_at }}</td>
                                             <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                                 <button class="group block rounded-xl overflow-hidden focus:outline-none"
-                                                    wire:click.prevent='openEditModal({{ $content->id }}, true)'>View</button>
+                                                    wire:click.prevent='openReviewModal({{ $content->id }}, true)'>View</button>
                                             </td>
                                         </tr>
                                     @endforeach

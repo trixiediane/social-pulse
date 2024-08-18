@@ -18,11 +18,11 @@ return new class extends Migration
             $table->longText('body');
             $table->string('photo');
             $table->string('slug')->unique();
-            $table->boolean('approved')->default(0);
+            $table->string('status')->default("PENDING");
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('approved_by')->default(0);
+            $table->unsignedBigInteger('updated_by')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('approved_by')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('updated_by')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

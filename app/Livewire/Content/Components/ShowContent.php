@@ -22,7 +22,7 @@ class ShowContent extends Component
         $query = Content::query();
 
         if ($user->hasRole('Admin')) {
-            $query->where('approved', 1);
+            $query->where('status', "APPROVED");
         } else {
             $query->where('user_id', $this->userId);
         }

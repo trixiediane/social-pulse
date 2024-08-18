@@ -10,7 +10,7 @@ use Livewire\Attributes\On;
 class ReviewContent extends Component
 {
     public $content = '';
-    public $editModal = false;
+    public $reviewModal = false;
     public $contentId;
     public $title;
     public $short_description;
@@ -25,8 +25,8 @@ class ReviewContent extends Component
         );
     }
 
-    #[On('edit-basic-modal')]
-    public function openEditModal($id, $editModal)
+    #[On('review-content-modal')]
+    public function openReviewModal($id, $reviewModal)
     {
         $this->content = Content::findOrFail($id);
 
@@ -36,6 +36,24 @@ class ReviewContent extends Component
         $this->body = $this->content->body;
         $this->photo = Storage::url($this->content->photo);
 
-        $this->editModal = $editModal;
+        $this->reviewModal = $reviewModal;
+    }
+
+    public function closeReviewModal()
+    {
+        $this->reviewModal = false;
+    }
+
+    public function updateContentStatus($status)
+    {
+        $userId = auth()->user()->id;
+
+        $this->content->update([
+            'status' => $status,
+            'updated_by' => $userId
+        ]);
+
+        session()->flash('confirmation', 'Updated the content status to: ' . $status);
+        $this->redirect('content');
     }
 }

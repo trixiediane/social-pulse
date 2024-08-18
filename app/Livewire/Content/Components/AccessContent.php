@@ -10,10 +10,20 @@ use Livewire\WithPagination;
 class AccessContent extends Component
 {
     use WithPagination, WithoutUrlPagination;
+    public $show = false;
+    public $message = '';
+    protected $listeners = ['showAlert'];
+
+    public function mount()
+    {
+        $this->show = session()->has('confirmation');
+        $this->message = session('confirmation', '');
+    }
+
     public function render()
     {
         $contents = Content::with('user')
-            ->where('approved', 0)
+            ->where('status', "PENDING")
             ->orderBy('id', 'DESC')
             ->paginate(3);
 
@@ -25,8 +35,20 @@ class AccessContent extends Component
         );
     }
 
-    public function openEditModal($id, $editModal)
+    public function openReviewModal($id, $reviewModal)
     {
-        $this->dispatch('edit-basic-modal', $id, editModal: $editModal);
+        $this->dispatch('review-content-modal', $id, reviewModal: $reviewModal);
+        $this->closeAlert();
+    }
+
+    public function showAlert($message)
+    {
+        $this->message = $message;
+        $this->show = true;
+    }
+
+    public function closeAlert()
+    {
+        $this->show = false;
     }
 }
