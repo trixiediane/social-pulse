@@ -14,6 +14,7 @@ class AccessContent extends Component
     {
         $contents = Content::with('user')
             ->where('approved', 0)
+            ->orderBy('id', 'DESC')
             ->paginate(3);
 
         return view(
