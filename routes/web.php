@@ -22,7 +22,6 @@ Route::get('/logout', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
-
     Route::get('/content', PageContent::class)->name('content');
     Route::get('/content/create', CreateContent::class)->name('create.content');
     Route::get('/content/view/{slug}', ViewContent::class)->name('content.view');
