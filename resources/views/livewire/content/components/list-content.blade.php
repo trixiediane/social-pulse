@@ -16,9 +16,6 @@
                                         {{ $contents->links() }}
                                     </div>
                                 </h2>
-                                {{-- <p class="text-sm text-gray-600">
-                                    Create teams, edit, download and more.
-                                </p> --}}
                             </div>
 
                             <div>
@@ -43,61 +40,25 @@
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th scope="col" class="px-6 py-3 text-start">
-                                        <a class="group inline-flex items-center gap-x-2 text-xs font-semibold uppercase text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                                            href="#">
-                                            Title
-                                            <svg class="shrink-0 size-3.5 text-gray-800"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="m7 15 5 5 5-5" />
-                                                <path d="m7 9 5-5 5 5" />
-                                            </svg>
-                                        </a>
-                                    </th>
-
-                                    <th scope="col" class="px-6 py-3 text-start">
-                                        <a class="group inline-flex items-center gap-x-2 text-xs font-semibold uppercase text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                                            href="#">
-                                            Short Description
-                                            <svg class="shrink-0 size-3.5 text-gray-800"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="m7 15 5 5 5-5" />
-                                                <path d="m7 9 5-5 5 5" />
-                                            </svg>
-                                        </a>
-                                    </th>
-                                    <th scope="col" class="px-6 py-3 text-start">
-                                        <a class="group inline-flex items-center gap-x-2 text-xs font-semibold uppercase text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                                            href="#">
-                                            Username
-                                            <svg class="shrink-0 size-3.5 text-gray-800"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="m7 15 5 5 5-5" />
-                                                <path d="m7 9 5-5 5 5" />
-                                            </svg>
-                                        </a>
-                                    </th>
-
-                                    <th scope="col" class="px-6 py-3 text-start">
-                                        <a class="group inline-flex items-center gap-x-2 text-xs font-semibold uppercase text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500"
-                                            href="#">
-                                            Status
-                                            <svg class="shrink-0 size-3.5 text-gray-800"
-                                                xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <path d="m7 15 5 5 5-5" />
-                                                <path d="m7 9 5-5 5 5" />
-                                            </svg>
-                                        </a>
-                                    </th>
-
+                                    @foreach (['title' => 'Title', 'short_description' => 'Short Description', 'username' => 'Username', 'status' => 'Status'] as $column => $label)
+                                        <th scope="col" class="px-6 py-3 text-start cursor-pointer">
+                                            <a wire:click.prevent="sortBy('{{ $column }}')"
+                                                class="group inline-flex items-center gap-x-2 text-xs font-semibold uppercase text-gray-800 hover:text-gray-500 focus:outline-none focus:text-gray-500">
+                                                {{ $label }}
+                                                <svg class="shrink-0 size-3.5 text-gray-800"
+                                                    xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                    viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                    <path d="m7 15 5 5 5-5"
+                                                        :class="{ 'rotate-180': sortColumn === '{{ $column }}' &&
+                                                                sortDirection === 'asc' }" />
+                                                    <path d="m7 9 5-5 5 5"
+                                                        :class="{ 'rotate-180': sortColumn === '{{ $column }}' &&
+                                                                sortDirection === 'desc' }" />
+                                                </svg>
+                                            </a>
+                                        </th>
+                                    @endforeach
                                     <th scope="col" class="px-6 py-3 text-end"></th>
                                 </tr>
                             </thead>
@@ -149,8 +110,7 @@
                         <!-- End Table -->
 
                         <!-- Footer -->
-                        {{-- <div
-                            class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
+                        {{-- <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
                             <div>
                                 <p class="text-sm text-gray-600">
                                 </p>
