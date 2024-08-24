@@ -42,7 +42,12 @@
             @endhasrole
         </div>
         <div id="card-type-tab-2" class="hidden" role="tabpanel" aria-labelledby="card-type-tab-item-2">
-            <livewire:content.components.create-content />
+            @hasrole('Admin')
+                <livewire:content.components.list-content />
+            @endhasrole
+            @hasrole('User')
+                <livewire:content.components.create-content />
+            @endhasrole
         </div>
         <div id="card-type-tab-3" class="hidden" role="tabpanel" aria-labelledby="card-type-tab-item-3">
             <p class="text-gray-500">
