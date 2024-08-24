@@ -33,6 +33,8 @@ class Register extends Component
 
         auth()->login($user);
 
+        $user->assignRole('User');
+
         request()->session()->regenerate();
 
         return redirect('/');
