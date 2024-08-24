@@ -1,1 +1,3 @@
-<div></div>
+<div>
+    <livewire:dashboard.components.posts />
+</div>
