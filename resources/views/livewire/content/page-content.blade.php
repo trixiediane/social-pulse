@@ -17,7 +17,7 @@
                 id="card-type-tab-item-2" aria-selected="false" data-hs-tab="#card-type-tab-2"
                 aria-controls="card-type-tab-2" role="tab">
                 @hasrole('Admin')
-                    Approved Submissions
+                    All
                 @endhasrole
                 @hasrole('User')
                     Create

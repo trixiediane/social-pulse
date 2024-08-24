@@ -50,11 +50,15 @@
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                     <path d="m7 15 5 5 5-5"
-                                                        :class="{ 'rotate-180': sortColumn === '{{ $column }}' &&
-                                                                sortDirection === 'asc' }" />
+                                                        :class="{
+                                                            'rotate-180': sortColumn === '{{ $column }}' &&
+                                                                sortDirection === 'asc'
+                                                        }" />
                                                     <path d="m7 9 5-5 5 5"
-                                                        :class="{ 'rotate-180': sortColumn === '{{ $column }}' &&
-                                                                sortDirection === 'desc' }" />
+                                                        :class="{
+                                                            'rotate-180': sortColumn === '{{ $column }}' &&
+                                                                sortDirection === 'desc'
+                                                        }" />
                                                 </svg>
                                             </a>
                                         </th>
@@ -67,7 +71,8 @@
                                 @foreach ($contents as $content)
                                     <tr class="bg-white hover:bg-gray-50">
                                         <td class="size-px whitespace-nowrap">
-                                            <a class="block relative z-10" href="#">
+                                            <a class="block relative z-10"
+                                                href="{{ route('content.view', $content->slug) }}">
                                                 <div class="px-6 py-2">
                                                     <div
                                                         class="block text-sm text-blue-600 decoration-2 hover:underline">
