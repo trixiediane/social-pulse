@@ -55,13 +55,15 @@
                                 <small class="text-sm text-gray-700">{{ $content->updated_at->diffForHumans() }}</small>
                             </div>
                             <!-- Image Thumbnail -->
-                            <div class="w-full h-60 mt-4 rounded-lg overflow-hidden">
-                                <img class="w-full h-full object-cover" src="{{ Storage::url($content->photo) }}"
-                                    alt="post-image">
-                            </div>
-                            <p class="mt-3 text-gray-700 text-sm">
-                                {{ $content->short_description }}
-                            </p>
+                            <a class="block relative z-0" href="{{ route('content.view', $content->slug) }}">
+                                <div class="w-full h-60 mt-4 rounded-lg overflow-hidden">
+                                    <img class="w-full h-full object-cover hover:scale-105 focus:scale-105 transition-transform duration-500 ease-in-out cursor-pointer"
+                                        src="{{ Storage::url($content->photo) }}" alt="post-image">
+                                </div>
+                                <p class="mt-3 text-gray-700 text-sm">
+                                    {{ $content->short_description }}
+                                </p>
+                            </a>
                             <div class="mt-4 flex flex-wrap items-center">
                                 <div class="flex text-gray-700 text-sm mr-3">
                                     <svg fill="none" viewBox="0 0 24 24" class="w-4 h-4 mr-1" stroke="currentColor">
