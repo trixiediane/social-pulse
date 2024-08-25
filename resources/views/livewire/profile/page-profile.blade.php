@@ -3,9 +3,8 @@
     <form wire:submit="update">
         <!-- Card -->
         <div class="bg-white rounded-xl shadow">
-            <div class="relative h-80 rounded-t-xl bg-no-repeat bg-cover bg-center"
-                style="background-image: url('{{ $user->profile_header ? Storage::url($user->profile_header) : 'https://preline.co/assets/svg/examples/abstract-bg-1.svg' }}');">
-            </div>
+            <img src="{{ $user->profile_header ? Storage::url($user->profile_header) : 'https://preline.co/assets/svg/examples/abstract-bg-1.svg' }}"
+                alt="Profile Header" class="w-full h-80 object-cover object-center" />
 
             <div class="pt-0 p-4 sm:pt-0 sm:p-7">
                 <!-- Grid -->
