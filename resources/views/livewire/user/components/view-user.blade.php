@@ -20,30 +20,22 @@
                         <h1 class="text-lg font-medium text-gray-800 flex items-center justify-center">
                             {{ $user->username }}
                         </h1>
+                        @hasrole('User')
+                            <div class="sm:mt-auto sm:mb-1.5 flex justify-end sm:justify-start gap-2 mt-2 md:mt-2 md:-ml-2">
+                                <button type="button"
+                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
+                                    Subscribe
+                                </button>
+                            </div>
+                        @endhasrole
                     </div>
                 </div>
 
-
                 <!-- About -->
                 <div class="mt-8 px-4">
-                    <p class="text-sm text-gray-600">
-                        I am a seasoned graphic designer with over 14 years of experience in creating visually appealing
-                        and
-                        user-centric designs. My expertise spans across UI design, design systems, and custom
-                        illustrations, helping
-                        clients bring their digital visions to life.
+                    <p class="text-sm text-gray-600 indent-6">
+                        {{ $user->bio }}
                     </p>
-
-                    <p class="mt-3 text-sm text-gray-600">
-                        Currently, I work remotely for Notion, where I design template UIs, convert them into HTML and
-                        CSS, and
-                        provide
-                        comprehensive support to our users. I am passionate about crafting elegant and functional
-                        designs that
-                        enhance
-                        user experiences.
-                    </p>
-
                     {{-- <ul class="mt-5 flex flex-col gap-y-3">
                         <li class="flex items-center gap-x-2.5">
                             <svg class="shrink-0 size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"

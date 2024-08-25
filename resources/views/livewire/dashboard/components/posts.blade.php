@@ -48,12 +48,16 @@
                 <!-- Post Content -->
                 <div class="flex flex-col h-full">
                     <div class="flex items-start p-4">
-                        <img class="w-12 h-12 rounded-full object-cover shadow"
-                            src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                            alt="avatar">
+                        <a href="{{ route('user.view', $content->user->username) }}">
+                            <img class="w-12 h-12 rounded-full object-cover shadow"
+                                src="{{ $content->user->profile_picture ? Storage::url($content->user->profile_picture) : 'https://preline.co/assets/img/160x160/img1.jpg' }}"
+                                alt="avatar">
+                        </a>
                         <div class="ml-4 flex-1">
                             <div class="flex items-center justify-between">
-                                <h2 class="text-lg font-semibold text-gray-900">{{ $content->user->username }}</h2>
+                                <a href="{{ route('user.view', $content->user->username) }}">
+                                    <h2 class="text-lg font-semibold text-gray-900">{{ $content->user->username }}</h2>
+                                </a>
                                 <small class="text-sm text-gray-700">{{ $content->updated_at->diffForHumans() }}</small>
                             </div>
                             <!-- Image Thumbnail -->
