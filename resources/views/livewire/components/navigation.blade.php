@@ -1,4 +1,4 @@
-<header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm">
+<header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm mt-4">
     <nav
         class="relative max-w-4xl w-full bg-white border border-gray-300 rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto overflow-visible">
         <div class="px-4 md:px-0 flex justify-between items-center">
@@ -53,53 +53,6 @@
             aria-labelledby="hs-navbar-header-floating-collapse">
             <div
                 class="flex flex-col md:flex-row md:items-center md:justify-end gap-2 md:gap-3 mt-3 md:mt-0 py-2 md:py-0 md:ps-7 relative">
-                <a class="py-0.5 md:py-3 px-4 md:px-1 border-s-2 md:border-s-0 md:border-b-2 border-transparent text-gray-500 hover:text-gray-800 focus:outline-none relative"
-                    href="#">
-                    <div class="relative">
-                        <!-- SearchBox -->
-                        <div class="relative">
-                            <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none z-20 ps-3.5">
-                                <svg class="shrink-0 size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round">
-                                    <circle cx="11" cy="11" r="8"></circle>
-                                    <path d="m21 21-4.3-4.3"></path>
-                                </svg>
-                            </div>
-                            <div>
-                                <input wire:model.live="search"
-                                    class="py-2 ps-12 pe-6 block w-full md:w-120 lg:w-full border border-gray-400 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none mt-2"
-                                    type="text" role="combobox" aria-expanded="false" placeholder="Search..."
-                                    value="" data-hs-combo-box-input="">
-
-                                @if ($search)
-                                    <ul class="bg-white border border-gray-100 w-full mt-2 absolute z-50 overflow-auto">
-                                        @forelse($users as $user)
-                                            <li
-                                                class="pl-8 pr-2 py-1 border-b-2 border-gray-100 relative cursor-pointer hover:bg-yellow-50 hover:text-gray-900">
-                                                <svg class="absolute w-4 h-4 left-2 top-2"
-                                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                                    fill="currentColor">
-                                                    <path fill-rule="evenodd"
-                                                        d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
-                                                        clip-rule="evenodd" />
-                                                </svg>
-                                                @<b>{{ $user->username }}</b>
-                                            </li>
-                                        @empty
-                                            <li class="pl-8 pr-2 py-1 border-b-2 border-gray-100 text-center">
-                                                No results found.
-                                            </li>
-                                        @endforelse
-                                    </ul>
-                                @endif
-                            </div>
-
-                        </div>
-                        <!-- End SearchBox -->
-                    </div>
-                </a>
 
                 @php
                     $currentRoute = request()->path();
