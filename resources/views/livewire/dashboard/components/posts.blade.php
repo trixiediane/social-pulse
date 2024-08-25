@@ -21,13 +21,15 @@
                 <div class="absolute z-50 w-full bg-white border border-gray-200 rounded-lg mt-1">
                     <div class="max-h-72 rounded-b-lg overflow-hidden overflow-y-auto">
                         @forelse($users as $user)
-                            <div class="cursor-pointer py-2 px-4 hover:bg-gray-100 flex items-center">
-                                <div class="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full mr-3">
-                                    <img src="{{ $user->profile_picture ? Storage::url($user->profile_picture) : 'https://preline.co/assets/img/160x160/img1.jpg' }}"
-                                        alt="Suggestion Image" class="w-6 h-6 object-cover rounded-full">
+                            <a href="{{ route('user.view', $user->username) }}">
+                                <div class="cursor-pointer py-2 px-4 hover:bg-gray-100 flex items-center">
+                                    <div class="flex items-center justify-center w-8 h-8 bg-gray-200 rounded-full mr-3">
+                                        <img src="{{ $user->profile_picture ? Storage::url($user->profile_picture) : 'https://preline.co/assets/img/160x160/img1.jpg' }}"
+                                            alt="Suggestion Image" class="w-6 h-6 object-cover rounded-full">
+                                    </div>
+                                    <div class="text-sm text-gray-800">{{ $user->username }}</div>
                                 </div>
-                                <div class="text-sm text-gray-800">{{ $user->username }}</div>
-                            </div>
+                            </a>
                         @empty
                             <div class="py-2 px-4 text-center text-gray-500">No results found.</div>
                         @endforelse

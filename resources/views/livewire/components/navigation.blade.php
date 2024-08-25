@@ -1,5 +1,4 @@
 <header class="sticky top-0 inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap w-full text-sm mt-4 z-10">
-
     <nav
         class="relative max-w-4xl w-full bg-white border border-gray-300 rounded-[2rem] mx-2 py-2.5 md:flex md:items-center md:justify-between md:py-0 md:px-4 md:mx-auto overflow-visible">
         <div class="px-4 md:px-0 flex justify-between items-center">

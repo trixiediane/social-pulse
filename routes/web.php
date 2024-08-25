@@ -7,6 +7,7 @@ use App\Livewire\Content\Components\ViewContent;
 use App\Livewire\Content\PageContent;
 use App\Livewire\Dashboard\Dashboard;
 use App\Livewire\Profile\PageProfile;
+use App\Livewire\User\Components\ViewUser;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', Login::class)->name('login');
@@ -22,9 +23,12 @@ Route::get('/logout', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');
+
     Route::get('/content', PageContent::class)->name('content');
     Route::get('/content/create', CreateContent::class)->name('create.content');
     Route::get('/content/view/{slug}', ViewContent::class)->name('content.view');
 
     Route::get('/profile', PageProfile::class)->name('profile');
+
+    Route::get('/user/{username}', ViewUser::class)->name('user.view');
 });
