@@ -13,7 +13,7 @@
                 </div>
                 <input wire:model.live="search"
                     class="py-3 pl-10 pr-4 block w-full border border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500"
-                    type="text" placeholder="Type a name">
+                    type="text" placeholder="Search...">
             </div>
 
             <!-- Suggestion Dropdown -->

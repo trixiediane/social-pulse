@@ -18,7 +18,7 @@
                             src="{{ $user->profile_picture ? Storage::url($user->profile_picture) : 'https://preline.co/assets/img/160x160/img1.jpg' }}"
                             alt="Avatar">
                         <h1 class="text-lg font-medium text-gray-800 flex items-center justify-center">
-                            Eliana Garcia
+                            {{ $user->username }}
                         </h1>
                     </div>
                 </div>
