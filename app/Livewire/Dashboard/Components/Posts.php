@@ -35,7 +35,7 @@ class Posts extends Component
 
         $query->orderBy('updated_at', 'DESC');
 
-        $contents = $query->paginate(10);
+        $contents = $query->paginate(4);
 
         return view(
             'livewire.dashboard.components.posts',

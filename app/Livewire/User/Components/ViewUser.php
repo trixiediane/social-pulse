@@ -8,9 +8,9 @@ use Livewire\Component;
 class ViewUser extends Component
 {
     public $user;
-    public function mount($username)
+    public function mount($userId)
     {
-        $this->user = User::where('username', $username)->firstOrFail();
+        $this->user = User::where('id', $userId)->firstOrFail();
     }
 
     public function render()
