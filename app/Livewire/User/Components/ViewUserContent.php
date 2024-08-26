@@ -19,7 +19,9 @@ class ViewUserContent extends Component
 
     public function render()
     {
-        $contents = Content::where('user_id', $this->userId)->paginate(4);
+        $contents = Content::where('user_id', $this->userId)
+            ->orderBy('id', 'DESC')
+            ->paginate(4);
         return view(
             'livewire.user.components.view-user-content',
             [
