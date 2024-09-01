@@ -12,6 +12,8 @@ class UserFollowers extends Component
     use WithPagination, WithoutUrlPagination;
 
     public $user;
+    public $searchFollower;
+    public $searchFollowing;
 
     public function mount($userId)
     {
@@ -20,12 +22,24 @@ class UserFollowers extends Component
 
     public function render()
     {
-        $followers = $this->user->followers()->paginate(10); // Adjust pagination size as needed
-        $following = $this->user->following()->paginate(10); // Adjust pagination size as needed
+        $followers = $this->user->followers()
+            ->orderBy('id', 'DESC')
+            ->search(['username'], $this->searchFollower)
+            ->paginate(10);
+
+        $following = $this->user->following()
+            ->orderBy('id', 'DESC')
+            ->search(['username'], $this->searchFollowing)
+            ->paginate(10);
 
         return view('livewire.user.components.user-followers', [
             'followers' => $followers,
             'following' => $following,
         ]);
+    }
+
+    public function updatedSearch()
+    {
+        $this->resetPage();
     }
 }
