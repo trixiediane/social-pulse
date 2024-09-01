@@ -29,9 +29,7 @@
             <livewire:user.components.view-user :userId="$user->id" />
         </div>
         <div id="bar-with-underline-3" class="hidden" role="tabpanel" aria-labelledby="bar-with-underline-item-3">
-            <p class="text-gray-500">
-                This is the <em class="font-semibold text-gray-800">third</em> item's tab body.
-            </p>
+            <livewire:user.components.user-followers :userId="$user->id" />
         </div>
     </div>
 </div>
