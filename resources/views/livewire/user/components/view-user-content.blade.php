@@ -2,7 +2,7 @@
 
     <!-- Pagination Block -->
     <div class="col-span-1 lg:col-span-2 mt-8 flex justify-end">
-        {{ $contents->links() }}
+        {{ $contents->links(data: ['scrollTo' => false]) }}
     </div>
     <div
         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 px-4 md:px-6 lg:px-8 mx-auto max-w-screen-md md:max-w-screen-lg">

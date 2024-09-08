@@ -57,7 +57,7 @@
                             </div>
 
                             <div class="py-1 px-4">
-                                {{ $followers->links() }}
+                                {{ $followers->links(data: ['scrollTo' => false]) }}
                             </div>
                         </div>
                     </div>
@@ -116,7 +116,7 @@
                             </div>
 
                             <div class="py-1 px-4">
-                                {{ $following->links() }}
+                                {{ $following->links(data: ['scrollTo' => false]) }}
                             </div>
                         </div>
                     </div>

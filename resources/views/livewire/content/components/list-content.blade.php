@@ -16,7 +16,7 @@
                                 <h2 class="text-xl font-semibold text-gray-800">
                                     <!-- Pagination -->
                                     <div class="mt-4">
-                                        {{ $contents->links() }}
+                                        {{ $contents->links(data: ['scrollTo' => false]) }}
                                     </div>
                                 </h2>
                             </div>

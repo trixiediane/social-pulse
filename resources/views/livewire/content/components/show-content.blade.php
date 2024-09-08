@@ -1,6 +1,6 @@
 <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto -mt-4">
     <!-- Grid -->
-    {{ $contents->links() }}
+    {{ $contents->links(data: ['scrollTo' => false]) }}
     <div class="grid lg:grid-cols-2 lg:gap-y-16 gap-10 mt-4">
         @foreach ($contents as $content)
             <!-- Card -->

@@ -22,10 +22,12 @@
                         </h1>
                         @hasrole('User')
                             <div class="sm:mt-auto sm:mb-1.5 flex justify-end sm:justify-start gap-2 mt-2 md:mt-2 md:-ml-2">
-                                <button wire:click="toggleFollow"
-                                    class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
-                                    {{ $isFollowing ? 'Unfollow' : 'Follow' }}
-                                </button>
+                                @if (!$isOwnProfile)
+                                    <button wire:click="toggleFollow"
+                                        class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 focus:outline-none focus:bg-gray-50">
+                                        {{ $isFollowing ? 'Unfollow' : 'Follow' }}
+                                    </button>
+                                @endif
                             </div>
                         @endhasrole
                     </div>

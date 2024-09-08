@@ -29,7 +29,7 @@
                         <div class="overflow-hidden">
                             <table class="min-w-full divide-y divide-gray-200">
                                 <caption class="py-2 text-start text-sm text-gray-600">List of Pending Submissions</caption>
-                                {{ $contents->links() }}
+                                {{ $contents->links(data: ['scrollTo' => false]) }}
                                 <thead>
                                     <tr>
                                         <th scope="col"

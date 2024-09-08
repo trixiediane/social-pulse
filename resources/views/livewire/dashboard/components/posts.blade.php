@@ -101,7 +101,7 @@
 
         <!-- Pagination Block -->
         <div class="col-span-1 lg:col-span-2 mt-8 flex justify-center">
-            {{ $contents->links() }}
+            {{ $contents->links(data: ['scrollTo' => false]) }}
         </div>
     </div>
 
