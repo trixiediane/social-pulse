@@ -43,6 +43,8 @@ class ViewUser extends Component
 
             // Update the local state to reflect the new follow/unfollow status.
             $this->isFollowing = !$this->isFollowing;
+
+            $this->dispatch('user-follow');
         }
     }
 

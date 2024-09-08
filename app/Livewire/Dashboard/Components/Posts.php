@@ -23,19 +23,20 @@ class Posts extends Component
             ->search(['username'], $this->search)
             ->paginate(5);
 
-        $query = Content::query();
+        // Get the users the current authenticated user follows
+        $followingUserIds = auth()->user()->following()->pluck('followed_id')->toArray();
 
-        $query->with('user');
+        // Include the authenticated user's ID
+        $followingUserIds[] = auth()->id();
 
-        if (auth()->user()->hasRole('User')) {
-            $query->where('status', 'PENDING');
-        } else {
-            $query->where('status', 'APPROVED');
-        }
+        $query = Content::query()
+            ->with('user')
+            ->whereIn('user_id', $followingUserIds)  // Include content from followed users and the authenticated user
+            ->where('status', 'APPROVED');  // Only show approved content
 
         $query->orderBy('updated_at', 'DESC');
 
-        $contents = $query->paginate(4);
+        $contents = $query->paginate(3);
 
         return view(
             'livewire.dashboard.components.posts',
@@ -46,6 +47,7 @@ class Posts extends Component
             ]
         );
     }
+
     public function updatedSearch()
     {
         $this->showResults = !empty($this->search);

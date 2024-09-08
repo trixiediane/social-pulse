@@ -3,6 +3,7 @@
 namespace App\Livewire\User\Components;
 
 use App\Models\User;
+use Livewire\Attributes\On;
 use Livewire\Component;
 use Livewire\Features\SupportPagination\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -38,6 +39,7 @@ class UserFollowers extends Component
         ]);
     }
 
+    #[On('user-follow')]
     public function updatedSearch()
     {
         $this->resetPage();
